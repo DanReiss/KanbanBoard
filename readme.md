@@ -1,0 +1,1 @@
+Projeto de um KanbanBoard, que é um quadro que controla os fluxos de produção muito utilizado em empresas com o objetivo de uma melhor gerencia de andamentos em determinado projeto.Projeto utilizado API no Javascript para Utilizar sistema de Drag and Drop, para mover tarefas.
