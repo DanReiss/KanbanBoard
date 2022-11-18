@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body class="bg-dark text-light">
+    <main class="d-flex flex-column justify-content-center align-items-center">
+        <div class="create-kanban">
+            <input class="name" type="text"></input>
+            <button class="add btn btn-secondary">Add to Board</button>
+        </div>
+        <div class="boards d-flex flex-row justify-content-evenly w-100">
+            <div class="board bg-secondary p-3 m-3 rounded">
+                    <h3>To-do</h3>
+                <div class="dropzone py-5 px-1 rounded">
+                    <div class="task bg-info rounded p-1 my-3" draggable="true">
+                        <div class="status bg-danger"></div>
+                        <div class="container">Example: Make Food</div>
+                    </div>
+                </div>
+            </div>
+            <div class="board bg-secondary p-3 m-3 rounded">
+                <h3>In progress</h3>
+                <div class="dropzone py-5 px-1 rounded">
+                    <div class="task bg-info rounded p-1 my-3" draggable="true">
+                        <div class="status bg-warning"></div>
+                        <div class="container">Example: Wash Car</div>
+                    </div>
+                </div>
+            </div>
+            <div class="board bg-secondary p-3 m-3 rounded">
+                <h3>Done</h3>
+                <div class="dropzone  py-5 px-1 roundede">
+                    <div class="task bg-info rounded p-1 my-3" draggable="true">
+                    <div class="status bg-success"></div>
+                    <div class="container">Example: Make kanban</div>
+                </div>
+            </div>
+            </div>  
+    </main> 
+
+    <script src="script.js"></script>
+</body>
+</html>

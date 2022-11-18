@@ -1,0 +1,28 @@
+.status{
+    float: right;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+
+.task, .dropzone{
+    transition: all 0.3s;
+}
+
+.board{
+    width: 25vw;
+}
+
+.highlight{
+    background-color: #646464;
+}
+
+.is-dragging{
+    cursor: move;
+    opacity: 0;
+}
+
+.in-over{
+    background-color: #48758b;
+}
