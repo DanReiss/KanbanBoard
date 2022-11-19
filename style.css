@@ -1,17 +1,62 @@
-.status{
-    float: right;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-}
 
 
 .task, .dropzone{
     transition: all 0.3s;
 }
 
+.dropzone{
+    height: 75%;
+}
+
+.boards{
+   flex-direction: row;
+   justify-content: space-evenly;
+}
+
+
 .board{
     width: 25vw;
+}
+
+.todo .status{
+    background-color: yellow;
+}
+
+.in-progress .status{
+    background-color: blue;
+}
+
+.done .status{
+    background-color: green;
+}
+
+.task{
+    display: grid;
+    grid-template-columns: 90% 10%;
+    max-height: 4rem;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "st del"
+                        "name del";
+    align-items: center;
+    justify-content: center;
+}
+
+.status{
+    margin: 0.25rem;
+    width: 15px;
+    height: 15px;
+    border-radius: 40%;
+    grid-area: st;
+}
+
+.box{
+    margin: 0.25rem;
+    grid-area: name;
+}
+
+.delete{
+    cursor: pointer;
+    grid-area: del;
 }
 
 .highlight{
@@ -26,3 +71,4 @@
 .in-over{
     background-color: #48758b;
 }
+
