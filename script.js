@@ -27,6 +27,9 @@ function createKanban(localTask, board){
         }else{
             dropzones[0].appendChild(newKanban);
         }
+
+        input.value = "";
+
     reload();
     save();
     }else{
