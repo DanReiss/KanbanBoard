@@ -3,11 +3,11 @@ const dropzones = document.querySelectorAll(".dropzone");
 const input = document.querySelector(".task-name");
 let deletes = document.querySelectorAll(".delete");
 
-
 window.addEventListener("load", reload);
 window.addEventListener("load", addSavedTasks);
 
 function createKanban(localTask, board){
+
     if(input.value.length !== 0 || localTask){
         let newKanban = document.createElement("div");
         newKanban.classList.add("task", "bg-info", "rounded", "p-1", "my-2");
@@ -119,6 +119,8 @@ function dragOver(){
    this.appendChild(cardDrag);
 };
 
-function dragLeave(){this.classList.remove("in-over")}; 
+function dragLeave(){
+    this.classList.remove("in-over")
+}; 
 
 function drop(){his.classList.remove("in-over")};
