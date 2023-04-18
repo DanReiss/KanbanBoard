@@ -1,5 +1,3 @@
-
-
 .task, .dropzone{
     transition: all 0.3s;
 }
@@ -8,15 +6,36 @@
     height: calc(100% - 100px);
 }
 
-
 .boards{
    flex-direction: row;
    justify-content: space-evenly;
 }
 
-
 .board{
     width: 25vw;
+}
+
+.trash{
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    bottom: 10%;
+    border-radius: 50%;
+    border: #48758b 3px solid;
+}
+
+.trash-dropzone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.trash img{
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 .todo .status{
@@ -31,33 +50,16 @@
     background-color: green;
 }
 
-.task{
-    display: grid;
-    grid-template-columns: 90% 10%;
-    /* max-height: 4rem; */
-    grid-template-rows: auto auto;
-    grid-template-areas: "st del"
-                        "name del";
-    align-items: center;
-    justify-content: center;
-}
-
 .status{
     margin: 0.25rem 0;
     width: 15px;
     height: 15px;
     border-radius: 40%;
-    grid-area: st;
 }
 
 .box{
     margin: 0.25rem;
     grid-area: name;
-}
-
-.delete{
-    cursor: pointer;
-    grid-area: del;
 }
 
 .highlight{

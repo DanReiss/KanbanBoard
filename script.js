@@ -1,5 +1,6 @@
 let tasks = document.querySelectorAll(".task");
 const dropzones = document.querySelectorAll(".dropzone");
+const trashDropzone = document.querySelector(".trash-dropzone");
 const input = document.querySelector(".task-name");
 let deletes = document.querySelectorAll(".delete");
 
@@ -18,10 +19,6 @@ function createKanban(localTask, board){
         let newBox = document.createElement("h5");
         newBox.innerText = input.value || localTask; // add tasks salvas || taskLocal
         newKanban.appendChild(newBox);
-        let newDelete = document.createElement("img");
-        newDelete.setAttribute("src", "./assets/x-svgrepo-com.svg");
-        newDelete.classList.add("delete");
-        newKanban.appendChild(newDelete);
         if(localTask){
             dropzones[board].appendChild(newKanban);
         }else{
@@ -72,7 +69,6 @@ function addSavedTasks(){
     tasksDone ? tasksDone.forEach(item => createKanban(item, 2)) : false;
 }
 
-
 function reload(){
     tasks = document.querySelectorAll(".task");
     deletes = document.querySelectorAll(".delete");
@@ -86,14 +82,6 @@ function reload(){
     });  
 };
 
-
-function addDelete(){
-    let parentDelete = this.parentElement;
-    parentDelete.parentElement.removeChild(parentDelete);
-    save();
-};
-
-
 function dragStart(){
     dropzones.forEach(dropzone => dropzone.classList.add("highlight"));
     this.classList.add('is-dragging');
@@ -106,21 +94,36 @@ function dragEnd(){
 };
 
 dropzones.forEach(dropzone =>{
-    dropzone.addEventListener('dragover', dragOver);
+    const isTrash = dropzone.classList.contains("trash-dropzone");
+
     dropzone.addEventListener('dragleave', dragLeave);
-    dropzone.addEventListener('drop', drop);
+    dropzone.addEventListener('dragover', dragOver);
+    dropzone.addEventListener('drop', isTrash? dropInTrash: drop);
 });
 
-function dragOver(){
-   this.classList.add("in-over");
 
-   const cardDrag = document.querySelector('.is-dragging');
+function dragOver(e){
+    e.preventDefault();
+
+    const isThisTrash = this.classList.contains("trash-dropzone");
+    const cardDrag = document.querySelector('.is-dragging');
+
+    this.classList.add("in-over");
    
-   this.appendChild(cardDrag);
+    if(!isThisTrash) this.appendChild(cardDrag);
 };
+
+function dropInTrash(){
+    const cardDrag = document.querySelector('.is-dragging');
+
+    cardDrag.remove();
+    this.classList.remove("in-over");
+}
 
 function dragLeave(){
     this.classList.remove("in-over")
 }; 
 
-function drop(){this.classList.remove("in-over")};
+function drop(){
+    this.classList.remove("in-over");
+};
