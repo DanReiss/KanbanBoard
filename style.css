@@ -9,6 +9,7 @@
 .boards{
    flex-direction: row;
    justify-content: space-evenly;
+   flex-flow: row wrap;
 }
 
 .board{
@@ -73,5 +74,12 @@
 
 .in-over{
     background-color: #48758b;
+}
+
+@media (max-width: 1024px) {
+    .board{
+        width: 32vw;
+        margin-bottom: 1rem;
+    }
 }
 
