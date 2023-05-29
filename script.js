@@ -1,37 +1,38 @@
 let tasks = document.querySelectorAll(".task");
 const dropzones = document.querySelectorAll(".dropzone");
 const trashDropzone = document.querySelector(".trash-dropzone");
+const form = document.querySelector("#create-kanban")
 const input = document.querySelector(".task-name");
 let deletes = document.querySelectorAll(".delete");
 
 window.addEventListener("load", reload);
 window.addEventListener("load", addSavedTasks);
 
-function createKanban(localTask, board){
-
-    if(input.value.length !== 0 || localTask){
-        let newKanban = document.createElement("div");
-        newKanban.classList.add("task", "bg-info", "rounded", "p-1", "my-2");
-        newKanban.setAttribute("draggable", true);
-        let newStatus = document.createElement("div");
-        newStatus.classList.add("status");
-        newKanban.appendChild(newStatus);
-        let newBox = document.createElement("h5");
-        newBox.innerText = input.value || localTask; // add tasks salvas || taskLocal
-        newKanban.appendChild(newBox);
-        if(localTask){
-            dropzones[board].appendChild(newKanban);
-        }else{
-            dropzones[0].appendChild(newKanban);
-        }
-
-        input.value = "";
-
-    reload();
-    save();
+form.addEventListener("submit", (e)=>{ 
+    e.preventDefault();
+    if(input.value.length !== 0){
+        createKanban(input.value, 0)
     }else{
         alert("Preencha o campo!");
     };
+})
+
+function createKanban(task, board){
+    let newKanban = document.createElement("div");
+    newKanban.classList.add("task", "bg-info", "rounded", "p-1", "my-2");
+    newKanban.setAttribute("draggable", true);
+    let newStatus = document.createElement("div");
+    newStatus.classList.add("status");
+    newKanban.appendChild(newStatus);
+    let newBox = document.createElement("h5");
+    newBox.innerText = input.value || task; // add tasks salvas || taskLocal
+    newKanban.appendChild(newBox);
+    dropzones[board].appendChild(newKanban);
+
+    input.value = "";
+
+    reload();
+    save();
 };
 
 
